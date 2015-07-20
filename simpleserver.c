@@ -1,13 +1,4 @@
-#include "sys/socket.h"
-#include "netinet/in.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "math.h"
-
-#define TMP_BYTES 3
-
-int convertIP (char* quad);
-char** getQuad(char* quad);
+#include "simpleserver.h"
 
 int main() {
 	int listenfd, connfd;
