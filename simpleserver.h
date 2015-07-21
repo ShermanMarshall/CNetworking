@@ -15,6 +15,6 @@
 
 //Prototypes
 int convertIP (char* quad);
-char** getQuad(char* quad, int* err);
+int* getQuad(char* quad, int* err);
 
 #endif
