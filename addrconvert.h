@@ -4,7 +4,6 @@
 //Necessary includes
 #include "sys/socket.h"
 #include "netinet/in.h"
-#include "arpa/inet.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
@@ -17,6 +16,5 @@
 //Prototypes
 int convertIP (char* quad);
 int* getQuad(char* quad, int* err);
-void str_echo(int sockdesc);
 
 #endif
