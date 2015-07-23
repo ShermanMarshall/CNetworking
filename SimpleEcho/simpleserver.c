@@ -28,7 +28,7 @@ int main() {
 		client_len = sizeof(client);
 		connfd = accept(listenfd, (struct sockaddr*) &client, &client_len);
 		if (connfd < 0) {
-			printf("Error receiving connection\nProcess Terminated\n");
+			printf("Process Terminated\n");
 			return 0;
 		}
 		if ((childpid = fork()) == 0) {
@@ -42,16 +42,15 @@ int main() {
 }
 
 void str_echo(int sockdesc) {
-	ssize_t n;
+	ssize_t n = (ssize_t) -1;
 	char buffer[100], *terminate = "exit\n";
 	bzero(buffer, 0);
-again:
-	while ( (n = read(sockdesc, buffer, 100) ) > 0 ) {
-		printf("Received: %s\n", buffer);
-		write(sockdesc, buffer, n);
-		printf("wrote: %s\n", buffer);
-		bzero(buffer, sizeof(buffer));
-	}
-	if (n < 0 && errno == EINTR)
-		goto again;
+	do {	
+		while ( (n = read(sockdesc, buffer, 100) ) > 0 ) {
+			printf("Received: %s\n", buffer);
+			write(sockdesc, buffer, n);
+			printf("wrote: %s\n", buffer);
+			bzero(buffer, sizeof(buffer));
+		}
+	} while ((n < 0) && (errno == EINTR));
 }
