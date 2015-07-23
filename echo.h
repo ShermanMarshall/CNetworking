@@ -1,5 +1,5 @@
-#ifndef __simpleserver__
-#define __simpleserver__
+#ifndef __echo__
+#define __echo__
 
 //Necessary includes
 #include "sys/socket.h"
@@ -9,6 +9,8 @@
 #include "stdlib.h"
 #include "math.h"
 #include "string.h"
+#include "errno.h"
+#include "unistd.h"
 
 //Constants
 #define TMP_BYTES 3
